@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Periyar for Youth - Join Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+    :root {
+        --primary: #FFC107;
+        --secondary: #2196F3;
+        --dark: #121212;
+        --medium: #1E1E1E;
+        --light: #FFFFFF;
+        --success: #4CAF50;
+        --error: #F44336;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+    }
+
+    body {
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.9);
+        background: var(--dark);
+        -webkit-font-smoothing: antialiased;
+        position: relative;
+        overflow-x: hidden; /* Prevents horizontal scroll */
+    }
+
+    /* Default background for mobile/tablet */
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200%; /* Makes the background wide enough for smooth animation */
+        height: 100%;
+        background-image: url('https://i.ibb.co/8ng7KvXP/gandr-collage-1.jpg'); /* Replace with your image URL */
+        background-size: cover;
+        background-repeat: repeat-x; /* Ensures it repeats horizontally */
+        background-position: 0 50%;
+        opacity: 0.2; /* Adjust transparency */
+        z-index: -1;
+        animation: moveBackground 20s linear infinite;
+    }
+
+    /* Animation for infinite scrolling effect */
+    @keyframes moveBackground {
+        0% { background-position: 0 50%; }
+        100% { background-position: -100% 50%; } /* Moves left to right */
+    }
+
+    /* Desktop-specific background scrolling */
+    @media (min-width: 1024px) {
+        body::before {
+            background-image: url('https://i.ibb.co/0RCw5Y3g/gandr-collage.jpg'); /* Replace with a different image for desktop */
+            animation: moveBackgroundDesktop 30s linear infinite; /* Slower animation for desktop */
+        }
+
+        @keyframes moveBackgroundDesktop {
+            0% { background-position: 0 50%; }
+            100% { background-position: -100% 50%; } /* Moves left to right */
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+    }
+
+    .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    header {
+        position: relative;
+        padding: 8rem 0 6rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        z-index: 1; /* Ensure content stays above the pseudo-element */
+    }
+
+    header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--medium), var(--dark));
+        opacity: 0.7; /* Adjust opacity as needed */
+        z-index: -1; /* Place it behind the content */
+    }
+
+    header h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        background: linear-gradient(45deg, var(--primary), #FFD54F);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text {
+        max-width: 760px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .benefits {
+        position: relative;
+        padding: 4rem 0;
+        z-index: 1;
+    }
+
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .benefit-card {
+        background: var(--medium);
+        padding: 2.5rem;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .benefit-card h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+
+    .cta-button {
+        display: inline-flex;
+        align-items: center;
+        background: var(--primary);
+        color: var(--dark);
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+    }
+
+    .form-section {
+        background: var(--medium);
+        border-radius: 16px;
+        padding: 3rem;
+        margin: 4rem auto;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        max-width: 800px;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 1rem;
+        background: var(--dark);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: var(--light);
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.2);
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary);
+        color: var(--dark);
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .submit-button:hover {
+        background: #FFD54F;
+    }
+
+    .faq-section {
+        background: var(--medium);
+        padding: 4rem 0;
+    }
+
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .faq-item {
+        margin-bottom: 1rem;
+    }
+
+    .faq-button {
+        width: 100%;
+        text-align: left;
+        background: var(--dark);
+        color: var(--primary);
+        padding: 1.5rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .faq-button::after {
+        content: '+';
+        position: absolute;
+        right: 1.5rem;
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .faq-button.active::after {
+        content: '-';
+        transform: rotate(180deg);
+    }
+
+    .faq-content {
+        display: none;
+        padding: 1.5rem;
+        background: var(--dark);
+        border-radius: 0 0 8px 8px;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .faq-content.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            padding: 0 1.5rem;
+        }
+
+        header {
+            padding: 4rem 0;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+        }
+
+        .benefits-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-section {
+            padding: 2rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Periyar for Youth</h1>
+            <div class="hero-text">
+                <p>A transformative initiative inspired by the visionary ideals of Thanthai Periyar, empowering individuals with skills, education, and opportunities to drive societal progress.</p>
+                <a href="#join-form" class="cta-button">Join Us Today</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="benefits">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Skill Development</h3>
+                    <p>Participate in workshops on communication, leadership, and industry-relevant skills.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Career Guidance</h3>
+                    <p>Receive mentorship from experienced professionals to navigate your career path.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Social Impact</h3>
+                    <p>Collaborate on initiatives that address community needs and drive social change.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Networking</h3>
+                    <p>Connect with peers and thought leaders who share your vision for a better society.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="join-form">
+        <div class="container">
+            <h2>Register Now</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required min="15">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Contact Number</label>
+                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+                </div>
+                <div class="form-group">
+                    <label for="location">Location in India</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <button type="submit" class="submit-button">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 2rem;">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">1. What is "Periyar for Youth"?</button>
+                    <div class="faq-content">
+                        "Periyar for Youth" is an initiative dedicated to empowering young individuals through skill development programs inspired by the vision of Thanthai Periyar. Our mission is to provide accessible education and resources to foster personal and professional growth among the youth.
+                    </div>
+                </div>
+                <!-- Additional FAQs -->
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">2. Who can join the programs offered by "Periyar for Youth"?</button>
+                    <div class="faq-content">
+                        Our programs are open to all youth who are eager to learn and develop new skills. There are no specific prerequisites or qualifications required to join.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">3. What skill development classes do you offer?</button>
+                    <div class="faq-content">
+                        We offer a variety of classes, including:
+                        <ul class="list-disc list-inside mt-2">
+                            <li>Photography Classes: Learn the fundamentals of photography, camera handling, and photo editing.</li>
+                            <li>Basics of Computers: Get introduced to computer operations, internet usage, and essential software applications.</li>
+                            <li>English Language: Improve your spoken and written English for effective communication.</li>
+                            <li>Resume Writing: Learn how to craft a professional resume to enhance your job prospects.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">4. How can I register for the classes?</button>
+                    <div class="faq-content">
+                        You can register by filling out the registration form on our website. Simply navigate to the "Register Now" section, provide the required information, select the classes you're interested in, and proceed to payment.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">5. Is there a registration fee?</button>
+                    <div class="faq-content">
+                        Yes, there is a registration fee of ₹500, which covers the cost of the classes and includes exclusive goodies such as badges, tote bags, and notepads.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">6. What payment methods do you accept?</button>
+                    <div class="faq-content">
+                        We accept various secure payment methods, including credit/debit cards and UPI. All payment transactions are encrypted and secure.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">7. Will I receive a confirmation after registering?</button>
+                    <div class="faq-content">
+                        Yes, upon successful registration and payment, you will receive a confirmation email with details about your selected classes, schedules, and information on how to collect your goodies.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">8. Where are the classes held?</button>
+                    <div class="faq-content">
+                        Currently, our classes are conducted online to make them accessible to participants regardless of their location. Details on how to join the online sessions will be provided after registration.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">9. What is the schedule for the classes?</button>
+                    <div class="faq-content">
+                        Class schedules vary depending on the course. We offer flexible timings, including weekends and evenings, to accommodate students and working professionals. Specific schedules will be shared after registration.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">10. Who are the instructors?</button>
+                    <div class="faq-content">
+                        Our instructors are experienced professionals and educators who are passionate about teaching and mentoring youth. They are experts in their respective fields and are dedicated to providing high-quality education.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">11. Can I enrol in multiple classes?</button>
+                    <div class="faq-content">
+                        Yes, you are welcome to enrol in as many classes as you like. Please select all the classes you are interested in when filling out the registration form.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">12. What if I need to cancel or reschedule my classes?</button>
+                    <div class="faq-content">
+                        If you need to cancel or reschedule, please contact us at least 48 hours before the class start date. Our team will assist you with the necessary arrangements. Please refer to our Cancellation Policy for more details.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">13. Do you offer any certifications upon completion?</button>
+                    <div class="faq-content">
+                        Yes, participants will receive a certificate of completion for each class they successfully complete. These certificates can be a valuable addition to your resume or portfolio.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">14. How do I receive the goodies included with the registration?</button>
+                    <div class="faq-content">
+                        The goodies (badges, tote bags, notepads) will be shipped to the address you provide during registration. Shipping details will be communicated via email.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">15. How can I contact "Periyar for Youth" for further inquiries?</button>
+                    <div class="faq-content">
+                        You can reach us via email at info@periyarforyouth.org. Additionally, you can connect with us on our social media platforms: Facebook, Twitter, YouTube, and Instagram.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">16. Are there any volunteer or collaboration opportunities?</button>
+                    <div class="faq-content">
+                        Yes, we welcome volunteers and collaborations with individuals and organisations that share our vision. Please contact us at volunteer@periyarforyouth.org for more information.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">17. Do you offer financial assistance or scholarships?</button>
+                    <div class="faq-content">
+                        We believe in making education accessible to all. Please contact us to inquire about financial assistance or scholarship opportunities.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-button" onclick="toggleFAQ(this)">18. Is my personal information secure?</button>
+                    <div class="faq-content">
+                        Yes, we are committed to protecting your privacy. Your personal information is securely stored and used only for purposes related to your participation in our programs. Please review our Privacy Policy for more details.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('active');
+            button.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
