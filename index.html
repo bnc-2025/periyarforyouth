@@ -365,21 +365,21 @@
         event.preventDefault();
 
         const formMessage = document.getElementById("formMessage");
-        formMessage.style.display = "none"; // Hide previous messages
+        formMessage.style.display = "none";
 
         const formData = {
-            name: document.getElementById("name").value,
-            age: document.getElementById("age").value,
-            phone: document.getElementById("phone").value,
-            location: document.getElementById("location").value
+            Name: document.getElementById("name").value,
+            Age: document.getElementById("age").value,
+            Phone: document.getElementById("phone").value,
+            Location: document.getElementById("location").value
         };
 
-        const googleScriptURL = "https://script.google.com/macros/s/AKfycbw6EPPuMlkvab726KzHWqLTJiLglb011JBIFNvOXI-SU44NdYOXJTJor-7Jlx7FiUPqDw/exec";
+        const googleScriptURL = "https://script.google.com/a/macros/buzzandchatter.in/s/AKfycbwKk8FGih4EFe4HkykDO-Z79ulaQ-DveOc4GrONKwAvqH30uuoC8Vz-GC8AC2rFUlswrw/exec"; // Replace with your Web App URL
 
         try {
-            const response = await fetch(googleScriptURL, {
+            await fetch(googleScriptURL, {
                 method: "POST",
-                mode: "no-cors", // Allows cross-origin requests
+                mode: "no-cors",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
             });
