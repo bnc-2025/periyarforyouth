@@ -361,7 +361,7 @@
 <div id="formMessage" style="display:none; text-align:center; margin-top:1rem; padding: 1rem; border-radius: 8px;"></div>
 
 <script>
- document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+ document.getElementById('joinForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   
   const formData = {
@@ -380,7 +380,7 @@
     
     if (response.ok) {
       alert('Form submitted successfully!');
-      document.getElementById('registrationForm').reset();
+      document.getElementById('joinForm').reset();
     } else {
       throw new Error('Submission failed');
     }
