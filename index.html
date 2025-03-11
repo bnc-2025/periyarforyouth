@@ -361,9 +361,10 @@
 <div id="formMessage" style="display:none; text-align:center; margin-top:1rem; padding: 1rem; border-radius: 8px;"></div>
 
 <script>
- document.getElementById('joinForm').addEventListener('submit', async (e) => {
+document.getElementById('joinForm').addEventListener('submit', async (e) => {
   e.preventDefault();
   
+  // Collect form data
   const formData = {
     name: document.getElementById('name').value,
     age: document.getElementById('age').value,
@@ -372,18 +373,17 @@
   };
 
   try {
+    // Send the data to Google Apps Script with no-cors
     const response = await fetch('https://script.google.com/macros/s/AKfycbyJ3ZR9HUzA8J3uHtWlzJynYmPE_6BYVfAdhJtnH1zxSTyERvjpuKaXCl6TFSSZ12RdNg/exec', {
       method: 'POST',
       body: JSON.stringify(formData),
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      mode: 'no-cors' // Disable CORS
     });
     
-    if (response.ok) {
-      alert('Form submitted successfully!');
-      document.getElementById('joinForm').reset();
-    } else {
-      throw new Error('Submission failed');
-    }
+    // Since the response is opaque, you can't check response.ok or read the response
+    alert('Form submitted (response not readable due to no-cors mode).');
+    document.getElementById('joinForm').reset(); // Reset the form
   } catch (error) {
     console.error('Error:', error);
     alert('Submission failed. Please try again.');
