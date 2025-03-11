@@ -361,42 +361,36 @@
 <div id="formMessage" style="display:none; text-align:center; margin-top:1rem; padding: 1rem; border-radius: 8px;"></div>
 
 <script>
-    document.getElementById("joinForm").addEventListener("submit", async function(event) {
-        event.preventDefault();
+  document.getElementById('joinForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const formData = {
+      name: document.getElementById('name').value,
+      age: document.getElementById('age').value,
+      phone: document.getElementById('phone').value,
+      location: document.getElementById('location').value
+    };
 
-        const formMessage = document.getElementById("formMessage");
-        formMessage.style.display = "none";
-
-        const formData = {
-            Name: document.getElementById("name").value,
-            Age: document.getElementById("age").value,
-            Phone: document.getElementById("phone").value,
-            Location: document.getElementById("location").value
-        };
-
-        const googleScriptURL = "https://script.google.com/a/macros/buzzandchatter.in/s/AKfycbwKk8FGih4EFe4HkykDO-Z79ulaQ-DveOc4GrONKwAvqH30uuoC8Vz-GC8AC2rFUlswrw/exec"; // Replace with your Web App URL
-
-        try {
-            await fetch(googleScriptURL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData)
-            });
-
-            formMessage.style.display = "block";
-            formMessage.style.background = "#4CAF50";
-            formMessage.style.color = "#fff";
-            formMessage.innerText = "✅ Successfully submitted! We'll get in touch soon.";
-
-            document.getElementById("joinForm").reset();
-        } catch (error) {
-            formMessage.style.display = "block";
-            formMessage.style.background = "#F44336";
-            formMessage.style.color = "#fff";
-            formMessage.innerText = "❌ Submission failed. Please try again later.";
+    try {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbzU610s1jj0lVX75c3T77cwlnt70LWaiR7jwI1EIpCw_hB7L_i48NRtOnkGJZqU3a196Q/exec', {
+        method: 'POST',
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json'
         }
-    });
+      });
+      
+      if (response.ok) {
+        alert('Form submitted successfully!');
+        document.getElementById('registrationForm').reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Submission failed. Please try again.');
+    }
+  });
 </script>
 
         </div>
